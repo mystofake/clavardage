@@ -14,7 +14,7 @@ public class Message implements Serializable {
   private User userDest;
   private User userOri;
   private String dateEnvoi;
-  private boolean deco = false;
+  private boolean deco;
 
   public Message() {}
   
@@ -25,6 +25,7 @@ public class Message implements Serializable {
 	  this.userDest = userDest;
 	  this.userOri = userOri;
 	  this.dateEnvoi = recupDate();
+	  this.deco = false;
   }
   
   
