@@ -6,7 +6,6 @@ import java.io.*;
 
 public class ChatWindow implements ActionListener  {
 
-    JFrame chatFrame;
     JPanel displayPanel, sendPanel, mainPanel;
     JButton sendButton;
     JTextArea messageBox;
@@ -32,6 +31,8 @@ public class ChatWindow implements ActionListener  {
         
         mainPanel.add(displayPanel);
         mainPanel.add(sendPanel);
+        
+
         
         this.nw = nw;
         
@@ -127,6 +128,16 @@ public class ChatWindow implements ActionListener  {
         //Display the window.
     	CWFrame.pack();
     	CWFrame.setVisible(true);   	
+    	
+    	CWFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+            		Message a = new Message(null,null,null);
+            		a.setDeco();
+            		a.SendMessage(nw.out2);
+                }
+    	});
+        
     }
      
     public void  writeReceivedMessage(Message message)

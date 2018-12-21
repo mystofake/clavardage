@@ -31,8 +31,10 @@ public class ThreadAffichage extends Thread{
 			while(running)
 			{			
 
-					Message messtest = Message.recupMessage(this.nw.in2);	
+					Message messtest = Message.recupMessage(this.nw.in2);
 					System.out.println(messtest);
+					if(messtest.getDeco())
+						running = false;
 					this.nw.CW.writeReceivedMessage(messtest);
 			
 

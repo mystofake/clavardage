@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
-//La classe Message permet de recueillir les messages à envoyer ainsi que toutes les métadonnées qui les accompagent.
-//Elle est serializable puisqu'elle sera envoyée à chaque nouveau message envoyé.
+//La classe Message permet de recueillir les messages ï¿½ envoyer ainsi que toutes les mï¿½tadonnï¿½es qui les accompagent.
+//Elle est serializable puisqu'elle sera envoyï¿½e ï¿½ chaque nouveau message envoyï¿½.
 
 public class Message implements Serializable {
 
@@ -14,6 +14,7 @@ public class Message implements Serializable {
   private User userDest;
   private User userOri;
   private String dateEnvoi;
+  private boolean deco = false;
 
   public Message() {}
   
@@ -39,7 +40,11 @@ public class Message implements Serializable {
 	  			System.out.println("ERROR FUNCTION : SendMessage");
 	  		}
  }
-	
+
+  public void setDeco()
+  {
+	  this.deco = true;
+  }
 	
 
   public String recupDate()
@@ -68,6 +73,11 @@ public class Message implements Serializable {
 		System.out.println("ERROR FUNCTION : recupMessage - ClassnotfounException");
 	  }
   	return(mess);
+  }
+  
+  public boolean getDeco()
+  {
+	  return this.deco;
   }
   
   
