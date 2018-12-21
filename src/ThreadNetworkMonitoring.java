@@ -83,6 +83,7 @@ public class ThreadNetworkMonitoring extends Thread {
 					    	if(!c.userList.pseudoIsIn(NwEv.getUser()))
 					    		c.userList.addToConnectedUser(NwEv.getUser());
 					    	
+					    	
 					    	if(c.connected)
 					    	{
 					    		NetworkEvent NwEv2 = new NetworkEvent(c.mainUser,"ShareUser");
@@ -105,9 +106,10 @@ public class ThreadNetworkMonitoring extends Thread {
 				    	
 				    		}
 				    		
-				    		if(NwEv.getUser().getPseudo().equals(c.mainUser.getPseudo()) && NwEv.getUser().getAddress().equals(c.mainUser.getAddress()))
+				    		if(NwEv.getUser().getPseudo().equals(c.mainUser.getPseudo()) && !NwEv.getUser().getAddress().equals(c.mainUser.getAddress()))
 		    				{
 				    			System.out.println("Username already used - Change username");
+				    			c.deconnect();
 		    				}
 				    		
 					    }
