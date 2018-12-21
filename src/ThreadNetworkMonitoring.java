@@ -114,7 +114,7 @@ public class ThreadNetworkMonitoring extends Thread {
 				    		
 					    }
 				    
-				    if(NwEv.isDeconnexion() && !NwEv.getUser().getPseudo().equals(c.mainUser.getPseudo()))
+				    if(NwEv.isDeconnexion() && !NwEv.getUser().getAddress().equals(c.mainUser.getAddress()))
 			    		{
 				    		System.out.println("Receive deconnect user : " + NwEv.getUser().getPseudo() + " DECONNECTED");
 				    		c.userList.removeToConnectedUser(NwEv.getUser());
