@@ -1,0 +1,138 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.lang.Object;
+import java.io.*;
+
+public class ChatWindow implements ActionListener  {
+
+    JFrame chatFrame;
+    JPanel displayPanel, sendPanel, mainPanel;
+    JButton sendButton;
+    JTextArea messageBox;
+    JTextArea showMessage;
+    final static String LOOKANDFEEL = "GTK+";
+    NetworkInterface nw;
+    
+    public ChatWindow(NetworkInterface nw)
+    {
+    	mainPanel = new JPanel();
+        try {
+			displayPanel = new JPanel();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        sendPanel = new JPanel();
+        
+        
+        addWidgets();
+        
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+        
+        mainPanel.add(displayPanel);
+        mainPanel.add(sendPanel);
+        
+        this.nw = nw;
+        
+    }
+    
+
+
+    
+    private void addWidgets()
+    {
+    	
+    	showMessage = new JTextArea("",30,70);
+    	showMessage.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        showMessage.setEditable(false);   
+        
+        messageBox = new JTextArea(7,25);
+        messageBox.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        sendButton = new JButton("Send");
+        sendButton.addActionListener(this);
+        
+        displayPanel.add(showMessage, BorderLayout.CENTER);
+        
+        sendPanel.add(messageBox, BorderLayout.CENTER);
+        sendPanel.add(sendButton, BorderLayout.CENTER);        
+    }
+    
+    
+    public void actionPerformed(ActionEvent event)
+    {
+    		Message a = new Message(messageBox.getText(),nw.userDest,nw.c.mainUser);
+    		showMessage.append(a + "\n");
+    		messageBox.setText("");
+    		System.out.println(a);
+    		a.SendMessage(nw.out2);
+
+    		
+    		
+    }
+    
+	private static void initLookAndFeel() {
+	        
+	        // Swing allows you to specify which look and feel your program uses--Java,
+	        // GTK+, Windows, and so on as shown below.
+	        String lookAndFeel = null;
+	        
+	        if (LOOKANDFEEL != null) {
+	            if (LOOKANDFEEL.equals("Metal")) {
+	                lookAndFeel = UIManager.getCrossPlatformLookAndFeelClassName();
+	            } else if (LOOKANDFEEL.equals("System")) {
+	                lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+	            } else if (LOOKANDFEEL.equals("Motif")) {
+	                lookAndFeel = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+	            } else if (LOOKANDFEEL.equals("GTK+")) { //new in 1.4.2
+	                lookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
+	            } else {
+	                System.err.println("Unexpected value of LOOKANDFEEL specified: "
+	                        + LOOKANDFEEL);
+	                lookAndFeel = UIManager.getCrossPlatformLookAndFeelClassName();
+	            }
+	            
+	            try {
+	                UIManager.setLookAndFeel(lookAndFeel);
+	            } catch (ClassNotFoundException e) {
+	                System.err.println("Couldn't find class for specified look and feel:"
+	                        + lookAndFeel);
+	                System.err.println("Did you include the L&F library in the class path?");
+	                System.err.println("Using the default look and feel.");
+	            } catch (UnsupportedLookAndFeelException e) {
+	                System.err.println("Can't use the specified look and feel ("
+	                        + lookAndFeel
+	                        + ") on this platform.");
+	                System.err.println("Using the default look and feel.");
+	            } catch (Exception e) {
+	                System.err.println("Couldn't get specified look and feel ("
+	                        + lookAndFeel
+	                        + "), for some reason.");
+	                System.err.println("Using the default look and feel.");
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+    
+    
+    public void createAndShowGUI()
+    {
+    	initLookAndFeel();
+    	JFrame.setDefaultLookAndFeelDecorated(true);
+    	JFrame CWFrame = new JFrame("Chat Window");
+    	CWFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    	CWFrame.setContentPane(this.mainPanel);
+
+        //Display the window.
+    	CWFrame.pack();
+    	CWFrame.setVisible(true);   	
+    }
+     
+    public void  writeReceivedMessage(Message message)
+    {
+    	showMessage.append(message + "\n");
+    	
+    }
+
+}
