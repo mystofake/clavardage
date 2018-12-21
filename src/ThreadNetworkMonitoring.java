@@ -118,7 +118,6 @@ public class ThreadNetworkMonitoring extends Thread {
 			    		{
 				    		System.out.println("Receive deconnect user : " + NwEv.getUser().getPseudo() + " DECONNECTED");
 				    		c.userList.removeToConnectedUser(NwEv.getUser());
-				    		System.out.println("Bug! ");
 				    		ListWindows.RemoveConnectedUser(NwEv.getUser());
 			    		}
 				    
