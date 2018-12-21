@@ -90,7 +90,7 @@ public Controler(){
 		{
 			this.deconnect();
 			this.mainUser = new User(pseudo);
-			this.ready = true;
+			this.connected = true;
 			this.init();
 		}
 		catch (Exception e)
