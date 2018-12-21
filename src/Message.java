@@ -81,6 +81,11 @@ public class Message implements Serializable {
 	  return this.deco;
   }
   
+  public User getUserSrc()
+  {
+	  return this.userOri;
+  }
+  
   
   public String toString()
   {
