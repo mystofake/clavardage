@@ -132,7 +132,7 @@ public class ChatWindow implements ActionListener  {
     	CWFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-            		Message a = new Message(nw.c.mainUser.getPseudo().concat(" s'est déconnecté"),nw.c.mainUser,nw.c.mainUser);
+            		Message a = new Message("Deco",nw.c.mainUser,nw.c.mainUser);
             		a.setDeco();
             		a.SendMessage(nw.out2);
                 }
