@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import javax.swing.JOptionPane;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -78,6 +79,19 @@ public class ListWindows {
 		panel.setLayout(gridLayout);
 		frame.setVisible(true);
 		panel.setVisible(true);
+		
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		        if (JOptionPane.showConfirmDialog(frame, 
+		            "Are you sure you want to close this window?", "Close Window?", 
+		            JOptionPane.YES_NO_OPTION,
+		            JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		        	c.deconnect();
+		            System.exit(0);
+		        }
+		    }
+		});
 	}
 	
 	
