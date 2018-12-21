@@ -18,6 +18,12 @@ Notes :
     la méthode getBroad() (ajuster le masque)
    
 
+
+Fichiers de conception (diagrammes) dispo sur le drive
+https://drive.google.com/open?id=1AVhcZFYUrFYxB6n-Wj3h0M5mq-PN6pnP
+
+
+
 --------------------------------------
 Contact : 
 tissot@etud.insa-toulouse.fr
