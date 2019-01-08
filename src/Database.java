@@ -88,7 +88,7 @@ public class Database {
 		      String sql = "use CLAVARDAGE";
 		      stmt.executeUpdate(sql);
 		      
-		      sql = "INSERT INTO" + mainUser.getPseudo() + "VALUES (" + m.getUserDest() + "," + m.getPDU() + ")";
+		      sql = "INSERT INTO " + mainUser.getPseudo() + " VALUES (" + m.getUserDest() + " , " + m.getPDU() + ")";
 		      
 		      stmt.executeUpdate(sql);
 		      
