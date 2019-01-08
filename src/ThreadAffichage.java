@@ -33,6 +33,7 @@ public class ThreadAffichage extends Thread{
 
 					Message messtest = Message.recupMessage(this.nw.in2);
 					System.out.println(messtest);
+					Database.write(messtest);
 					if(messtest.getDeco())
 					{
 						running = false;
