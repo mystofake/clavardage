@@ -42,7 +42,7 @@ public class Message implements Serializable {
   			System.out.println("ERROR FUNCTION : SendMessage");
   		}
 	  	
-	  	Database.write(this);
+	  	Database.write(this,true);
  }
 
   public void setDeco()
