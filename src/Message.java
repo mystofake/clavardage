@@ -86,6 +86,15 @@ public class Message implements Serializable {
 	  return this.userOri;
   }
   
+  public User getUserDest()
+  {
+	  return this.userDest;
+  }  
+  
+  public String getPDU()
+  {
+	  return this.pdu;
+  }
   
   public String toString()
   {
