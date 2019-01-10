@@ -11,7 +11,7 @@ public class Database {
 		   
 		   
 		   mainUser = c.mainUser;
-		   String DB_URL = "jdbc:sqlite:Clavardage - "+ mainUser.getPseudo()+".db";
+		   String DB_URL = "jdbc:sqlite:Clavardage-"+ mainUser.getPseudo()+".db";
 
 	   Connection conn = null;
 	   Statement stmt = null;
@@ -56,7 +56,7 @@ public class Database {
 		   Statement stmt = null;
 		   try{
 
-			   String DB_URL = "jdbc:sqlite:Clavardage - "+ mainUser.getPseudo()+".db";
+			   String DB_URL = "jdbc:sqlite:Clavardage-"+ mainUser.getPseudo()+".db";
 			   String tableName;
 
 		      //STEP 3: Open a connection
