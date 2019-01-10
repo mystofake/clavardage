@@ -31,15 +31,18 @@ public class Message implements Serializable {
   
   public void SendMessage (ObjectOutputStream out)	
  {
+	  	
 	  	this.dateEnvoi=recupDate();
 	  	try {
 	  		out.writeObject(this);
 	  	}
 		
-	  		catch(IOException e)
-	  		{
-	  			System.out.println("ERROR FUNCTION : SendMessage");
-	  		}
+  		catch(IOException e)
+  		{
+  			System.out.println("ERROR FUNCTION : SendMessage");
+  		}
+	  	
+	  	Database.write(this,true);
  }
 
   public void setDeco()
